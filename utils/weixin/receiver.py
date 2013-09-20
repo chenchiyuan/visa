@@ -7,7 +7,7 @@ from core import WeiXin
 
 class WeiXinReceiver(object):
     """
-    接受GET，POST的请求，进行参数校验。分发到对应的State
+    接受GET，POST的请求，进行参数校验。分发到对应的初始State
     """
     def __init__(self, user, request):
         self.user = user

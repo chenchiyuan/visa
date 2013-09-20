@@ -17,7 +17,7 @@ class StateInterface(object):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-    def to_xml(self):
+    def to_xml(self, input):
         return ""
 
     def _to_wx_text(self, content=""):

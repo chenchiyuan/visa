@@ -4,6 +4,7 @@
 from __future__ import division, unicode_literals, print_function
 
 WX_TOKEN = ""
+WX_USE_CACHE = False
 
 def get_conf(name):
     try:
