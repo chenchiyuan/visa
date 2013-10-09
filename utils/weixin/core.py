@@ -29,7 +29,7 @@ class WeiXin(object):
         obj = WeiXin(xml_body=xml_body)
         return obj
 
-    def to_json(self):
+    def _to_json(self):
         '''http://docs.python.org/2/library/xml.etree.elementtree.html#xml.etree.ElementTree.XML
         '''
         j = {}
@@ -41,6 +41,17 @@ class WeiXin(object):
                 value = child.text
             j[child.tag] = value
         return j
+
+    def to_json(self):
+        json_data = self._to_json()
+        return {
+            "from_user_name": json_data.get("FromUserName", ""),
+            "msg_id": json_data.get("MsgId", ""),
+            "to_user_name": json_data.get("ToUserName", ""),
+            "content": json_data.get("Content", ""),
+            "msg_type": json_data.get("MsgType", ""),
+            "create_time": json_data.get("CreateTime", "")
+        }
 
     def _to_tag(self, k):
         return ''.join([w.capitalize() for w in k.split('_')])

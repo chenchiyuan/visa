@@ -30,7 +30,7 @@ class StateManager(CacheMixin, object):
     }
 
 
-    def __init__(self, state_name, no_cache=False, **kwargs):
+    def __init__(self, state_name="ECHO", no_cache=False, **kwargs):
         # 如果no_cache, 默认不使用cache
         self.use_cache = get_conf("WX_USE_CACHE") and no_cache
         state = self.initial_state(state_name, **kwargs)

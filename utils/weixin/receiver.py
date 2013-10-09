@@ -20,7 +20,7 @@ class WeiXinReceiver(object):
         return token == get_conf("WX_CONF")
 
     def dispatch(self):
-        wx_object = WeiXin(xml_body=self.request.BODY, **self.request.GET)
+        wx_object = WeiXin(xml_body=self.request.body, **self.request.GET)
         json_data = wx_object.to_json()
         msg_type = json_data.get("MsgType", "message")
         handler = getattr(self, msg_type, self.message)
