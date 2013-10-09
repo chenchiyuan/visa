@@ -45,9 +45,9 @@ class WeiXin(object):
     def to_json(self):
         json_data = self._to_json()
         return {
-            "from_user_name": json_data.get("FromUserName", ""),
+            "to_user_name": json_data.get("FromUserName", ""),
             "msg_id": json_data.get("MsgId", ""),
-            "to_user_name": json_data.get("ToUserName", ""),
+            "from_user_name": json_data.get("ToUserName", ""),
             "content": json_data.get("Content", ""),
             "msg_type": json_data.get("MsgType", ""),
             "create_time": json_data.get("CreateTime", "")
