@@ -2,6 +2,7 @@
 # __author__ = chenchiyuan
 
 from __future__ import division, unicode_literals, print_function
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
 from utils.weixin.receiver import WeiXinReceiver
 from django.http import HttpResponse
@@ -11,6 +12,7 @@ class WeiXinInterfaceView(View):
         receiver = WeiXinReceiver(request)
         return HttpResponse(receiver.echo())
 
+    @csrf_exempt
     def post(self, request, *args, **kwargs):
         receiver = WeiXinReceiver(request)
         return HttpResponse(receiver.dispatch())
