@@ -27,8 +27,8 @@ class WeiXinReceiver(object):
         return handler(json_data)
 
     def message(self, json_data):
-        return StateManager(**json_data)
-
+        manager = StateManager(**json_data)
+        return manager.handler(json_data.get("content", ""))
     #
     #def event(self, json_data):
     #    event = json_data['Event']
