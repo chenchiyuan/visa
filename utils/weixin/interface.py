@@ -3,6 +3,9 @@
 
 from __future__ import division, unicode_literals, print_function
 from utils.weixin.core import WeiXin
+import logging
+
+logger = logging.getLogger(__name__)
 
 class StateInterface(object):
     """
@@ -17,20 +20,32 @@ class StateInterface(object):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
+    def __getattribute__(self, item):
+        try:
+            return super(StateInterface, self).__getattribute__(item)
+        except Exception, err:
+            logger.info(err)
+            return ""
+
     def to_xml(self, input):
         return ""
 
     def _to_wx_text(self, content=""):
         wx = WeiXin()
-        xml = wx.to_text(from_user_name=self.from_user_name,
-            to_user_name=self.to_user_name, content=content)
+        xml = wx.to_text(
+            from_user_name=self.from_user_name, to_user_name=self.to_user_name, content=content
+        )
         return xml
 
     def _to_full_text(self, articles):
         wx = WeiXin()
-        xml = wx.to_pic_text(from_user_name=self.from_user_name, to_user_name=self.to_user_name,
-            articles=articles)
+        xml = wx.to_pic_text(
+            from_user_name=self.from_user_name, to_user_name=self.to_user_name, articles=articles
+        )
         return xml
 
     def next(self, input):
-        raise NotImplemented
+        return "", {
+            "from_user_name": self.from_user_name,
+            "to_user_name": self.to_user_name
+        }

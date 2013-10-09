@@ -3,9 +3,10 @@
 
 from __future__ import division, unicode_literals, print_function
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
+from visa.views.weixin import WeiXinInterfaceView
 
 
 urlpatterns = patterns('',
-    url(r'^wx/v0/interface/$', include('visa.urls.urls'),),
+    url(r'^wx/v0/interface/$', WeiXinInterfaceView.as_view(), name="wx_interface"),
 )
