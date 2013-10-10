@@ -3,7 +3,7 @@
 
 from __future__ import division, unicode_literals, print_function
 from utils.weixin.conf import get_conf
-from utils.weixin.states import EchoState
+from utils.weixin.states import EchoState, VideoState
 
 
 class CacheMixin(object):
@@ -27,6 +27,7 @@ class StateManager(CacheMixin, object):
     """
     states = {
         "ECHO": EchoState,
+        "VIDEO": VideoState
     }
 
 
