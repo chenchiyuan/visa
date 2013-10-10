@@ -43,6 +43,8 @@ class WeiXin(object):
         return j
 
     def to_json(self):
+        # 获取元数据
+        # WARNING: 如果出现多个接口元数据名重复，需要这里区分。
         json_data = self._to_json()
         return {
             "to_user_name": json_data.get("FromUserName", ""),
@@ -50,7 +52,17 @@ class WeiXin(object):
             "from_user_name": json_data.get("ToUserName", ""),
             "content": json_data.get("Content", ""),
             "msg_type": json_data.get("MsgType", ""),
-            "create_time": json_data.get("CreateTime", "")
+            "create_time": json_data.get("CreateTime", ""),
+            "picture": json_data.get("PicUrl", ""),
+            "lat": json_data.get("Location_X", ""),
+            "lng": json_data.get("Location_Y", ""),
+            "scale": json_data.get("Scale", ""),
+            "label": json_data.get("Label", ""),
+            "title": json_data.get("Title", ""),
+            "description": json_data.get("Description", ""),
+            "url": json_data.get("Url", ""),
+            "event": json_data.get("Event", ""),
+            "event_key": json_data.get("EventKey", "")
         }
 
     def _to_tag(self, k):
