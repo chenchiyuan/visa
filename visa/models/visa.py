@@ -57,11 +57,11 @@ class Visa(models.Model, QuerysetMixin):
     content = models.TextField(u"内容", max_length=4096, blank=True)
 
     def __unicode__(self):
-        return self.area
+        return "%s签证, 价格:%s, 类别: %s" %(self.name, self.price, self.category)
 
     def to_article(self):
         return {
-            "title":  self.name,
+            "title":  unicode(self),
             "description": "价格: %s, 类别: %s" %(self.price, self.category),
             "picurl": "",
             "url": "",
