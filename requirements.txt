@@ -1,2 +1,7 @@
 django
 gunicorn
+PIL
+South
+beautifulsoup4
+django-extensions
+requests
