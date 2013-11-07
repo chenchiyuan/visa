@@ -64,7 +64,7 @@ class Visa(models.Model, QuerysetMixin):
         return {
             "title":  unicode(self),
             "description": "价格: %s, 类别: %s" %(self.price, self.category),
-            "picurl": "",
+            "picurl": "http://www.ailvxing.com/d/file/travel-info/visanews/Africa/2010-09-08/a1efe12058da663548f2f0f6d82da641.png",
             "url": self.url,
         }
 
