@@ -4,6 +4,7 @@
 from __future__ import division, unicode_literals, print_function
 from django.db import models
 from django.db.models import Q
+import json
 
 
 class QuerysetMixin(object):
@@ -64,8 +65,13 @@ class Visa(models.Model, QuerysetMixin):
             "title":  unicode(self),
             "description": "价格: %s, 类别: %s" %(self.price, self.category),
             "picurl": "",
-            "url": "",
+            "url": self.url,
         }
+
+    @property
+    def url(self):
+        json_data = json.loads(self.content)
+        return json_data.get("url", "")
 
     @classmethod
     def response_query(cls, query):
