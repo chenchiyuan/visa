@@ -75,6 +75,7 @@ class Visa(models.Model, QuerysetMixin):
 
     @classmethod
     def response_query(cls, query):
+        query = query.replace("签证", "")
         visas = cls.filter_by_queries(name=query)
 
         articles = []
